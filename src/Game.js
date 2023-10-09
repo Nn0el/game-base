@@ -1,3 +1,6 @@
+
+import Player from './player.js'
+
 export default class Game {
   constructor(width, height) {
     this.width = width
@@ -7,6 +10,7 @@ export default class Game {
     this.gameOver = false
     this.gravity = 1
     this.debug = false
+    this.player = new Player(this)
   }
 
   update(deltaTime) {
@@ -15,5 +19,7 @@ export default class Game {
     }
   }
 
-  draw(context) {}
+  draw(context) {
+    this.player.draw(context)
+  }
 }

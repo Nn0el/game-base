@@ -1,4 +1,5 @@
 import Game from './Game'
+import Player from './player'
 
 export function setup(canvas) {
   const ctx = canvas.getContext('2d')
@@ -13,7 +14,9 @@ export function setup(canvas) {
     lastTime = timeStamp
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     game.update(deltaTime)
+    
     game.draw(ctx)
+    
     requestAnimationFrame(animate)
   }
 
