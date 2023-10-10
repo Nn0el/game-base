@@ -1,5 +1,6 @@
 
-import Player from './player.js'
+import Player from './Player.js'
+import InputHandler from './InputHandler.js'
 
 export default class Game {
   constructor(width, height) {
@@ -11,15 +12,19 @@ export default class Game {
     this.gravity = 1
     this.debug = false
     this.player = new Player(this)
+    this.InputHandler = new InputHandler
   }
+
+
 
   update(deltaTime) {
     if (!this.gameOver) {
       this.gameTime += deltaTime
+      this.player.update(deltaTime)
     }
   }
-
   draw(context) {
     this.player.draw(context)
   }
+
 }

@@ -1,5 +1,4 @@
-import Game from './Game'
-import Player from './player'
+import Game from './Game.js'
 
 export function setup(canvas) {
   const ctx = canvas.getContext('2d')
