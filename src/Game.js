@@ -12,7 +12,7 @@ export default class Game {
     this.gravity = 1
     this.debug = false
     this.player = new Player(this)
-    this.InputHandler = new InputHandler
+    this.InputHandler = new InputHandler(this)
   }
 
 

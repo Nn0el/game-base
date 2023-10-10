@@ -3,21 +3,24 @@ export default class InputHandler {
         this.game = game
        
         window.addEventListener('keydown', (event) => {
+            console.log(event)
             if (
-                (
-                event.key === 'ArrowUp' ||
+                (event.key === 'ArrowUp' ||
                   event.key === 'ArrowDown') &&
                 this.game.keys.indexOf(event.key) === -1
               ) {
                 this.game.keys.push(event.key)
               }
-              if (this.game.keys.indexOf(event.key) > -1) 
-
-              {
-                this.game.keys.splice(this.game.keys.indexOf(event.key), 1)
+              if (event.key === 'd') {
+                this.game.debug = !this.game.debug
               }
+            })
+              window.addEventListener('keyup', (event) => {
+              if (this.game.keys.indexOf(event.key) > -1) {
+                this.game.keys.splice(this.game.keys.indexOf(event.key), 1)
+              }})
 
-        })
+        
     }
 
 }
