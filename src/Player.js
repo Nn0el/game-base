@@ -47,10 +47,7 @@ export default class Player {
     this.projectiles.push(
       new Projectile(this.game, this.x + this.width, this.y + this.height / 2)
     )
-    if (event.key === 'a') {
-      this.game.player.shoot()
-    }
-    
+   
   }
  
 
