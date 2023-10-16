@@ -39,6 +39,7 @@ export default class Game {
   }
   addEnemy() {
     this.enemies.push(new Ghost(this))
+    
   }
   draw(context) {
     this.player.draw(context)

@@ -11,3 +11,5 @@ Hur gick det? Smidigare än förväntat.
 Vad ska du göra idag? Enemys och kanske mer om jag hinner. 
 Vad behöver du lära dig? Tror jag behöver lära mig mer om arrayer. 
 Vad behöver du av jens? Hjälp ibland typ. 
+
+Jag har enemies men dom kan inte dö än så jag får fixa det med någon if-sats. 
