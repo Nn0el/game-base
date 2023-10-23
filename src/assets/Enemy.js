@@ -18,11 +18,11 @@ export default class Enemy {
         if (this.game.debug) {
             
           }
-          if(Projectile.x + Projectile.height>this.x){
+          if(Projectile.y + Projectile.height>=this.y){
           this.lives = 0
           }
           if(this.lives=0){
-            context.fillStyle = '#1a5'
+            context.fillStyle = '#CCCCCC'
           }
     }
 
