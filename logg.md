@@ -14,3 +14,4 @@ Vad behöver du av jens? Hjälp ibland typ.
 
 Jag har enemies men dom kan inte dö än så jag får fixa det med någon if-sats. 
 Även skapat en ny typ av enemies "bat" 
+Bat är mer unik nu och jag har påbörjat mer med kollision

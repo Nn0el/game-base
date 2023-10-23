@@ -15,14 +15,15 @@ export default class Enemy {
       draw(context) {
         context.fillStyle = '#0f0'
         context.fillRect(this.x, this.y, this.width, this.height)
+        
+        
+        
         if (this.game.debug) {
             
           }
-          if(Projectile.y + Projectile.height>=this.y){
-          this.lives = 0
-          }
+          
           if(this.lives=0){
-            context.fillStyle = '#CCCCCC'
+            
           }
     }
 

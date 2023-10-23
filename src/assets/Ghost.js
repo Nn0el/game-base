@@ -7,7 +7,7 @@ export default class Ghost extends Enemy {
     this.height = 40
     this.x = this.game.width
     this.y = Math.random() * (this.game.height * 0.9 - this.height)
-    this.speedX = Math.random() * -1.5 - 0.5
+    this.speedX = Math.random() * -1.6 - 0.6
    
   }
 
