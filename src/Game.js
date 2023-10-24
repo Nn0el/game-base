@@ -4,7 +4,6 @@ import InputHandler from './InputHandler.js'
 import UserInterface from './UserInterface.js'
 import Ghost from './assets/Ghost.js'
 import Bat from './assets/Bat.js'
-import CheckCollision from './CheckCollision.js'
 export default class Game {
   constructor(width, height) {
     this.width = width
@@ -14,7 +13,6 @@ export default class Game {
     this.gameOver = false
     this.gravity = 1
     this.debug = false
-    this.checkCollision = new CheckCollision(this)
     this.player = new Player(this)
     this.InputHandler = new InputHandler(this)
     this.UserInterface = new UserInterface(this)
@@ -22,9 +20,18 @@ export default class Game {
     this.enemyTimer = 0
     this.enemyInterval = 1000
     
+    
   }
 
+  CheckCollision(object1, object2) {
+    return (
+      object1.x < object2.x + object2.width &&
+      object1.x + object1.width > object2.x &&
+      object1.y < object2.y + object2.height &&
+      object1.height + object1.y > object2.y
+    )
 
+  }
 
   update(deltaTime) {
     if (!this.gameOver) {
@@ -42,11 +49,11 @@ export default class Game {
 
     this.enemies.forEach((enemy) => {
       enemy.update(deltaTime)
-      if (this.checkCollision(this.player, enemy)) {
+      if (this.CheckCollision(this.player, enemy)) {
         enemy.markedForDeletion = true
       }
       this.player.projectiles.forEach((projectile) => {
-        if (this.checkCollision(projectile, enemy)) {
+        if (this.CheckCollision(projectile, enemy)) {
           enemy.markedForDeletion = true
           projectile.markedForDeletion = true
         }
@@ -57,6 +64,8 @@ export default class Game {
     this.enemies.push(new Ghost(this))
     this.enemies.push(new Bat(this))
   }
+
+  
   draw(context) {
     this.player.draw(context)
     this.UserInterface.draw(context)
