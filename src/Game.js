@@ -4,6 +4,7 @@ import InputHandler from './InputHandler.js'
 import UserInterface from './UserInterface.js'
 import Ghost from './assets/Ghost.js'
 import Bat from './assets/Bat.js'
+import FrejSpell from './assets/FrejSpell.js'
 export default class Game {
   constructor(width, height) {
     this.width = width
@@ -63,6 +64,7 @@ export default class Game {
   addEnemy() {
     this.enemies.push(new Ghost(this))
     this.enemies.push(new Bat(this))
+    this.enemies.push(new FrejSpell(this))
   }
 
   
