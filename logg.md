@@ -16,3 +16,4 @@ Jag har enemies men dom kan inte dö än så jag får fixa det med någon if-sat
 Även skapat en ny typ av enemies "bat" 
 Bat är mer unik nu och jag har påbörjat mer med kollision
 Kollison funkar och finns ny enemy FrejSpell
+

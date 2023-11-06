@@ -20,6 +20,8 @@ export default class Game {
     this.enemies = []
     this.enemyTimer = 0
     this.enemyInterval = 1000
+    this.bossTimer = 0
+    this.bossInterval = 5000
     
     
   }
@@ -39,11 +41,19 @@ export default class Game {
       this.gameTime += deltaTime
       this.player.update(deltaTime)
     }
+
     if (this.enemyTimer > this.enemyInterval && !this.gameOver) {
-      this.addEnemy()
+      this.addEnemy(deltaTime)
       this.enemyTimer = 0
     } else {
       this.enemyTimer += deltaTime
+    } 
+
+    if (this.bossTimer > this.bossInterval && !this.gameOver) {
+      this.addBoss()
+      this.bossTimer = 0
+    } else {
+      this.bossTimer += deltaTime
     } 
      
     this.enemies = this.enemies.filter((enemy) => !enemy.markedForDeletion)
@@ -61,12 +71,21 @@ export default class Game {
       })
     })
   }
-  addEnemy() {
+  addEnemy(deltaTime, enemyTimer, bossTimer) {
+    console.log(deltaTime)
+    if(this.enemyTimer<=2000){
     this.enemies.push(new Ghost(this))
     this.enemies.push(new Bat(this))
-    this.enemies.push(new FrejSpell(this))
+    }
+    if(bossTimer>=20000){
+      this.enemies.push(new FrejSpell(this))
+    }
   }
 
+  
+addBoss () {
+  console.log('like a boss')
+}
   
   draw(context) {
     this.player.draw(context)
