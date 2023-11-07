@@ -32,7 +32,7 @@ Kollision så att projektiler kan döda enemies
 Userinterface visar tiden
 
 Varför?
-Skapa bra spel med objekt orienterat programmeringssätt
+Skapa bra och fungerande spel med objekt orienterat programmeringssätt
 
 Ordning:
 * Spelfaser

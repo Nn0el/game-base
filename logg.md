@@ -17,3 +17,5 @@ Jag har enemies men dom kan inte dö än så jag får fixa det med någon if-sat
 Bat är mer unik nu och jag har påbörjat mer med kollision
 Kollison funkar och finns ny enemy FrejSpell
 
+2023-11-07
+Det finns nu en vanlig fas och en bossfas 
