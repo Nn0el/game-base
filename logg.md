@@ -19,3 +19,5 @@ Kollison funkar och finns ny enemy FrejSpell
 
 2023-11-07
 Det finns nu en vanlig fas och en bossfas 
+
+Börjat med sprites
