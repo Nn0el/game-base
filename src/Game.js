@@ -5,6 +5,7 @@ import UserInterface from './UserInterface.js'
 import Ghost from './assets/Ghost.js'
 import Bat from './assets/Bat.js'
 import FrejSpell from './assets/FrejSpell.js'
+import SpritePlayer from './assets/SpritePlayer.js'
 export default class Game {
   constructor(width, height) {
     this.width = width
@@ -17,6 +18,7 @@ export default class Game {
     this.player = new Player(this)
     this.InputHandler = new InputHandler(this)
     this.UserInterface = new UserInterface(this)
+    this.SpritePlayer = new SpritePlayer(this)
     this.enemies = []
     this.enemyTimer = 0
     this.enemyInterval = 1000
@@ -92,6 +94,12 @@ addBoss () {
     this.player.draw(context)
     this.UserInterface.draw(context)
     this.enemies.forEach((enemy) => enemy.draw(context))
+    if (this.flip) {
+      context.save()
+      context.scale(-1, 1)
+    }
+
+    
   }
 
 }
