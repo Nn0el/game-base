@@ -21,3 +21,4 @@ Kollison funkar och finns ny enemy FrejSpell
 Det finns nu en vanlig fas och en bossfas 
 
 Börjat med sprites
+Walk animation klar
