@@ -1,5 +1,5 @@
 import Enemy from './Enemy'
-
+import spriteImage from './assets/SpritesSpel.png'
 export default class Bat extends Enemy {
   constructor(game) {
     super(game)
