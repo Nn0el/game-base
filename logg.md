@@ -22,3 +22,6 @@ Det finns nu en vanlig fas och en bossfas
 
 Börjat med sprites
 Walk animation klar
+
+
+Ghost sprite är påbörjad, bara animation kvar
