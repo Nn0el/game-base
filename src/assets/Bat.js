@@ -1,5 +1,5 @@
 import Enemy from './Enemy'
-import spriteImage from './assets/SpritesSpel.png'
+import spriteImage from './SpritesSpel.png'
 export default class Bat extends Enemy {
   constructor(game) {
     super(game)
@@ -9,10 +9,7 @@ export default class Bat extends Enemy {
     this.y = Math.random() * (this.game.height * 0.9 - this.height)
     this.speedX = Math.random() * -1.9 - 0.1
     this.MaxSpeed = 7
-    this.fps = 20
-    this.timer = 0
-    this.interval = 1000 / this.fps
-    this.flip = false
+    
 
     const image = new Image()
     image.src = spriteImage

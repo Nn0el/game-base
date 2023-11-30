@@ -13,7 +13,7 @@ export default class Player {
     this.speedY = 0
 
     this.fps = 20
-    this.timer = 0
+    this.timer = 1
     this.interval = 1000 / this.fps
     this.flip = false
 
@@ -23,10 +23,7 @@ export default class Player {
     this.frameX = 0
     this.frameY = 1
     this.maxFrame = 4
-    this.fps = 20
-    this.timer = 1
-    this.interval = 1000 / this.fps
-    this.flip = false
+    
   }
 
 
