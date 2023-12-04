@@ -2,7 +2,7 @@
 import Player from './Player.js'
 import InputHandler from './InputHandler.js'
 import UserInterface from './UserInterface.js'
-import Ghost from './assets/Ghost.js'
+import Ghost from './Ghost.js'
 import Bat from './assets/Bat.js'
 import FrejSpell from './assets/FrejSpell.js'
 
@@ -18,6 +18,8 @@ export default class Game {
     this.player = new Player(this)
     this.InputHandler = new InputHandler(this)
     this.UserInterface = new UserInterface(this)
+    this.ghost = new Ghost(this)
+
     this.enemies = []
     this.enemyTimer = 0
     this.enemyInterval = 1000
@@ -41,6 +43,7 @@ export default class Game {
     if (!this.gameOver) {
       this.gameTime += deltaTime
       this.player.update(deltaTime)
+      this.ghost.update(deltaTime)
     }
 
     if (this.enemyTimer > this.enemyInterval && !this.gameOver) {
