@@ -1,5 +1,5 @@
 import Enemy from './assets/Enemy'
-import spriteImage from './assets/SpritesSpel.png'
+import spriteImage from './SpritesSpel.png'
 
 export default class Ghost extends Enemy {
   constructor(game) {
@@ -10,8 +10,8 @@ export default class Ghost extends Enemy {
     this.x = this.game.width
     this.y = Math.random() * (this.game.height * 0.9 - this.height)
     this.speedX = Math.random() * -1.6 - 0.6
-    this.frameX = 0
-    this.frameY = 64 * 7
+    this.frameX = 5
+    this.frameY = 7
     this.fps = 20
     this.timer = 0
     this.interval = 1000 / this.fps
@@ -23,7 +23,7 @@ export default class Ghost extends Enemy {
 
   }
   update(deltaTime) {
-
+this.x+=this.speedX
     if (this.timer > this.interval) {
       this.frameX++
       this.timer = 0
@@ -44,7 +44,7 @@ export default class Ghost extends Enemy {
     context.drawImage(
       this.image,
       this.frameX * this.width,
-      this.frameY,
+      this.frameY * this.height+1,
       this.width,
       this.height,
       this.x,

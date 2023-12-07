@@ -3,8 +3,8 @@ import Player from './Player.js'
 import InputHandler from './InputHandler.js'
 import UserInterface from './UserInterface.js'
 import Ghost from './Ghost.js'
-import Bat from './assets/Bat.js'
-import FrejSpell from './assets/FrejSpell.js'
+import Bat from './Bat.js'
+import FrejSpell from './FrejSpell.js'
 
 export default class Game {
   constructor(width, height) {

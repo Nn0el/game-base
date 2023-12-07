@@ -1,5 +1,5 @@
 import Projectile from "./Projectile.js"
-import spriteImage from './assets/SpritesSpel.png'
+import spriteImage from './SpritesSpel.png'
 export default class Player {
   constructor(game) {
     this.projectiles = []
