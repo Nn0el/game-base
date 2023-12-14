@@ -6,7 +6,7 @@ export default class FrejSpell extends Enemy {
         this.height = 60
         this.width = 64
         this.x = this.game.width
-        this.y = Math.random() * (this.game.height * 0.9 - this.height)
+        this.y = Math.random() * (this.game.height * 0.9 - this.height) +0.2
         this.speedX = -4
         this.MaxSpeed = 7
 

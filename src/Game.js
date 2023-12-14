@@ -5,6 +5,8 @@ import UserInterface from './UserInterface.js'
 import Ghost from './Ghost.js'
 import Bat from './Bat.js'
 import FrejSpell from './FrejSpell.js'
+import Bakgrund from './Bakgrund.js'
+
 
 export default class Game {
   constructor(width, height) {
@@ -19,6 +21,8 @@ export default class Game {
     this.InputHandler = new InputHandler(this)
     this.UserInterface = new UserInterface(this)
     this.ghost = new Ghost(this)
+    this.Bakgrund = new Bakgrund(this)
+    
 
     this.enemies = []
     this.enemyTimer = 0
@@ -40,6 +44,8 @@ export default class Game {
   }
 
   update(deltaTime) {
+     
+    
     if (!this.gameOver) {
       this.gameTime += deltaTime
       this.player.update(deltaTime)
