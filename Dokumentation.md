@@ -8,3 +8,15 @@ Efter denna uppgift så har min kunskap kring Javascript blivit mycket större o
 
 Jag anser att denna uppgift är väldigt bra för att kunna utvecklas inom både Javascript och programmering generellt. Man får lära sig mer om de olika steg som krävs för att skapa ett spel men även om objekt orienterad programmering och man får lära sig allt detta på ett praktiskt sätt vilket jag verkligen uppskattar. Dock tror jag att instruktionerna till varje steg skulle kunna vara tydligare och mer utförliga så att man verkligen förstår varje steg. 
 
+
+{
+    "team": "Kosmiska blöttdjur",
+    "creators": Noel ,
+    "title": "Monster shooting",
+    "description": "Skjut alla läskiga monster, Rör dig med upp och ner piltangenterna och skjut med a  ",
+    "image": "",
+    "url": "https://nn0el.github.io/game-base/",
+    "git": "https://github.com/Nn0el/game-base"
+},
+
+
