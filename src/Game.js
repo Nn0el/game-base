@@ -59,6 +59,8 @@ export default class Game {
       this.enemyTimer += deltaTime
     } 
 
+
+
     if (this.bossTimer > this.bossInterval && !this.gameOver) {
       this.addBoss()
       this.bossTimer = 0
@@ -68,18 +70,23 @@ export default class Game {
      
     this.enemies = this.enemies.filter((enemy) => !enemy.markedForDeletion)
 
+
+    
     this.enemies.forEach((enemy) => {
       enemy.update(deltaTime)
       if (this.CheckCollision(this.player, enemy)) {
-        enemy.markedForDeletion = true
+        this.gameOver = true
       }
       this.player.projectiles.forEach((projectile) => {
         if (this.CheckCollision(projectile, enemy)) {
           enemy.markedForDeletion = true
           projectile.markedForDeletion = true
         }
+        
       })
     })
+
+    
   }
   addEnemy(deltaTime, enemyTimer, bossTimer) {
     console.log(deltaTime)
@@ -92,6 +99,7 @@ export default class Game {
     }
   }
 
+  
   
 addBoss () {
   console.log('like a boss')
