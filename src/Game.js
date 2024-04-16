@@ -22,7 +22,7 @@ export default class Game {
     this.UserInterface = new UserInterface(this)
     this.ghost = new Ghost(this)
     this.Bakgrund = new Bakgrund(this)
-    
+    this.score = 0
 
     this.enemies = []
     this.enemyTimer = 0
@@ -51,6 +51,8 @@ export default class Game {
       this.player.update(deltaTime)
       this.ghost.update(deltaTime)
     }
+
+    
 
     if (this.enemyTimer > this.enemyInterval && !this.gameOver) {
       this.addEnemy(deltaTime)
@@ -81,10 +83,16 @@ export default class Game {
         if (this.CheckCollision(projectile, enemy)) {
           enemy.markedForDeletion = true
           projectile.markedForDeletion = true
+          this.score ++ 
+          console.log(this.score)
         }
         
       })
+      if(this.player.x>enemy.x){
+      this.gameOver =true
+    }
     })
+
 
     
   }

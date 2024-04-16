@@ -1,3 +1,5 @@
+import Game from './Game.js'
+import score from './Game.js'
 export default class UserInterface {
   constructor(game, gameTime) {
     this.game = game
@@ -5,6 +7,7 @@ export default class UserInterface {
     this.fontFamily = 'Arial'
     this.color = 'white'
     this.game.gameTime = 1
+    this.game.score = 1
   }
   draw(context) {
     context.save()
@@ -14,11 +17,23 @@ export default class UserInterface {
     context.shadowColor = 'black'
     context.textAlign = 'left'
     context.font = `${this.fontSize}px ${this.fontFamily}`
+
+
+    console.log(this.game.score)
     context.fillText(
+      `Score: ${(this.game.score * 0.1).toFixed(1)}`, 40, 200,
+      )
+
+    context.fillText(
+
+      
+
       `Time: ${(this.game.gameTime * 0.001).toFixed(1)}`,
       20,
       100
+
     )
+
     if (this.game.gameOver) {
       context.textAlign = 'center'
       context.font = `50px ${this.fontFamily}`
