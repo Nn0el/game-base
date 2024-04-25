@@ -31,6 +31,7 @@ export default class Game {
     this.bossInterval = 1000
 
     this.hiscore  = new Hiscore(this)
+    
   }
 
   
