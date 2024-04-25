@@ -1,7 +1,6 @@
 export default class InputHandler {
-  constructor(game) {
+  constructor(game, ammo) {
     this.game = game
-
     window.addEventListener('keydown', (event) => {
       console.log(event)
       if (

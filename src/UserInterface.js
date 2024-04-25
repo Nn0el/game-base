@@ -19,14 +19,16 @@ export default class UserInterface {
     context.font = `${this.fontSize}px ${this.fontFamily}`
 
 
-    console.log(this.game.score)
+    
     context.fillText(
-      `Score: ${(this.game.score * 0.1).toFixed(1)}`, 40, 200,
+      `Score: ${(this.game.score * 10).toFixed(1)}`, 40, 200,
       )
 
-    context.fillText(
+      context.fillText(
+        `Ammo: ${this.game.player.ammo}`, 40, 300,
+        )
 
-      
+    context.fillText(
 
       `Time: ${(this.game.gameTime * 0.001).toFixed(1)}`,
       20,

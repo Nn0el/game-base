@@ -23,6 +23,11 @@ export default class Player {
     this.frameX = 0
     this.frameY = 1
     this.maxFrame = 4
+
+    this.ammo = 13
+    this.maxAmmo = 24
+    this.ammoInterval = 900
+    this.ammoTimer = 0
     
   }
 
@@ -63,6 +68,15 @@ export default class Player {
     if (this.frameX >= this.maxFrame) {
       this.frameX = 0
     }
+
+    if (this.ammoTimer > this.ammoInterval) {
+      console.log("regga ammo ")
+      this.ammo++
+      this.ammoTimer = 0
+    } else {
+      this.ammoTimer += deltaTime
+    }
+
   }
 
 
@@ -94,9 +108,12 @@ export default class Player {
   }
 
   shoot() {
-    this.projectiles.push(
-      new Projectile(this.game, this.x + this.width, this.y + this.height / 2)
-    )
+    if (this.ammo > 0) {
+      this.projectiles.push(
+        new Projectile(this.game, this.x + this.width, this.y + this.height / 2)
+        )
+        this.ammo--
+      }
 
   }
 

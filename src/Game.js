@@ -6,7 +6,7 @@ import Ghost from './Ghost.js'
 import Bat from './Bat.js'
 import FrejSpell from './FrejSpell.js'
 import Bakgrund from './Bakgrund.js'
-
+import Hiscore from './Hiscore.js'
 
 export default class Game {
   constructor(width, height) {
@@ -29,9 +29,12 @@ export default class Game {
     this.enemyInterval = 1000
     this.bossTimer = 0
     this.bossInterval = 1000
-    
-    
+
+    this.hiscore  = new Hiscore(this)
   }
+
+  
+  
 
   CheckCollision(object1, object2) {
     return (
@@ -44,22 +47,27 @@ export default class Game {
   }
 
   update(deltaTime) {
-     
-    
+
+
+    if (this.gameOver) {
+      return
+    }
+
+
     if (!this.gameOver) {
       this.gameTime += deltaTime
       this.player.update(deltaTime)
       this.ghost.update(deltaTime)
     }
 
-    
+
 
     if (this.enemyTimer > this.enemyInterval && !this.gameOver) {
       this.addEnemy(deltaTime)
       this.enemyTimer = 0
     } else {
       this.enemyTimer += deltaTime
-    } 
+    }
 
 
 
@@ -68,52 +76,53 @@ export default class Game {
       this.bossTimer = 0
     } else {
       this.bossTimer += 1
-    } 
-     
+    }
+
     this.enemies = this.enemies.filter((enemy) => !enemy.markedForDeletion)
 
 
-    
+
     this.enemies.forEach((enemy) => {
       enemy.update(deltaTime)
       if (this.CheckCollision(this.player, enemy)) {
-        this.gameOver = true
+        this.endGame()
+
       }
       this.player.projectiles.forEach((projectile) => {
         if (this.CheckCollision(projectile, enemy)) {
           enemy.markedForDeletion = true
           projectile.markedForDeletion = true
-          this.score ++ 
-          console.log(this.score)
+          this.score++
+         
         }
-        
+
       })
-      if(this.player.x>enemy.x){
-      this.gameOver =true
-    }
+      if (this.player.x > enemy.x) {
+        this.endGame()
+      }
     })
 
 
-    
+
   }
   addEnemy(deltaTime, enemyTimer, bossTimer) {
     console.log(deltaTime)
-    if(this.gameTime<=35000){
-    this.enemies.push(new Ghost(this))
-    this.enemies.push(new Bat(this))
+    if (this.gameTime <= 35000) {
+      this.enemies.push(new Ghost(this))
+      this.enemies.push(new Bat(this))
     }
-    if(this.gameTime>=35555){
+    if (this.gameTime >= 35555) {
       this.enemies.push(new FrejSpell(this))
     }
   }
 
-  
-  
-addBoss () {
-  console.log('like a boss')
-  
-}
-  
+
+
+  addBoss() {
+    console.log('like a boss')
+
+  }
+
   draw(context) {
     this.player.draw(context)
     this.UserInterface.draw(context)
@@ -123,7 +132,15 @@ addBoss () {
       context.scale(-1, 1)
     }
 
-    
+
+  }
+
+
+  endGame() {
+    this.gameOver = true
+    this.hiscore.postScore()
+    this.hiscore.getScore()
+
   }
 
 }
