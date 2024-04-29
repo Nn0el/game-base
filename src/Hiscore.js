@@ -13,26 +13,39 @@ export default class Hiscore {
 
 
 
-  throttleFetch(options) {
+  fetch(options) {
     return this.limiter.schedule(() => fetch(this.url, options))
   }
 
-getScore() {
+  getScore() {
     console.log("hämta hiscore med jens kod")
-    const url = "http://localhost:3000"
-  throttleFetch(`${this.url}/score`)
-    
+
+  fetch(`${this.url}/score`)
+
 
   }
   postScore() {
     console.log("skicka score")
-    const url = "http://localhost:3000"
-    const data = { score }
-    
-      
+
+    const data = { Hiscore }
+
+
   }
 
-  
+  testApi () {
+    
+    fetch(this.url)
+      .then((response) => response.text())
+      .then((text) => {
+        console.log(text)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
 
-  
+
+
+
+
 }
