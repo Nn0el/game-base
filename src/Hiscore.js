@@ -17,9 +17,13 @@ export default class Hiscore {
     return this.limiter.schedule(() => fetch(this.url, options))
   }
 
-postScore() {
+
+
+  postScore(score) {
     console.log("skicka score")
-    const data = { Hiscore }
+
+    const data = { score, namn: "Noel" }
+    console.log(score)
     fetch(`${this.url}/score`, {
       method: "POST",
       headers: {
@@ -30,8 +34,8 @@ postScore() {
       .then((response) => response.text())
       .then((text) => {
         console.log(text)
-      
-    })
+
+      })
 
 
   }
@@ -39,28 +43,29 @@ postScore() {
   getScore() {
     console.log("hämta hiscore med jens kod")
 
-  fetch(`${this.url}/score`)
-  .then((response) => response.text())
-  .then((text) => {
-    console.log(text)
-    const scores = JSON.parse(text)
-    const list = document.createElement("ul")
-    scores.forEach((score) => {
-      const item = document.createElement("li")
-      item.textContent = `${score.name}: ${score.score}`
-      list.appendChild(item)
-    })
-    element.appendChild(list)
-  })
-  .catch((error) => {
-    console.error(error)
-  })
+    fetch(`${this.url}/score`)
+      .then((response) => response.text())
+      .then((text) => {
+        console.log(text)
+        const scores = JSON.parse(text)
+        const list = document.createElement("ul")
+        scores.forEach((score) => {
+          const item = document.createElement("li")
+          item.textContent = `${score.name}: ${score.score}`
+          list.appendChild(item)
+        })
+        element.appendChild(list)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
   }
 
-  
 
-  testApi () {
-    
+
+
+  testApi() {
+
     fetch(this.url)
       .then((response) => response.text())
       .then((text) => {
@@ -70,6 +75,8 @@ postScore() {
         console.error(error)
       })
   }
+
+
 
 
 

@@ -35,7 +35,9 @@ export default class Game {
     
   }
 
-  
+  Ask(){
+    let namn =prompt("skriv namn")
+  }
   
 
   CheckCollision(object1, object2) {
@@ -140,7 +142,7 @@ export default class Game {
 
   endGame() {
     this.gameOver = true
-    this.hiscore.postScore()
+    this.hiscore.postScore(this.score)
     this.hiscore.getScore()
 
   }

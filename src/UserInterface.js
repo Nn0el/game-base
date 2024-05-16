@@ -20,6 +20,8 @@ export default class UserInterface {
 
 
     
+
+
     context.fillText(
       `Score: ${(this.game.score * 10).toFixed(1)}`, 40, 200,
       )
