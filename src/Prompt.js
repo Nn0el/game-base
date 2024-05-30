@@ -1,3 +1,3 @@
 
 
-let namn =prompt("skriv namn")
+let namn = prompt("skriv namn")

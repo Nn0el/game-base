@@ -3,7 +3,7 @@ import Bottleneck from 'bottleneck'
 export default class Hiscore {
   constructor(game) {
     this.game = game
-    this.url = "https://generated-hungry-pleasure.glitch.me"
+    this.url = "https://dandelion-glacier-parsley.glitch.me"
     this.limiter = new Bottleneck({
       minTime: 200 // 5 requests per second
     })

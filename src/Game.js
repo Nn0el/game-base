@@ -31,7 +31,6 @@ export default class Game {
     this.bossInterval = 1000
 
     this.hiscore  = new Hiscore(this)
-    this.hiscore.testApi()
     
   }
 
@@ -141,9 +140,10 @@ export default class Game {
 
 
   endGame() {
+    this.Ask
     this.gameOver = true
     this.hiscore.postScore(this.score)
-    this.hiscore.getScore()
+    // this.hiscore.getScore()
 
   }
 
