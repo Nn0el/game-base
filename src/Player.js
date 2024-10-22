@@ -1,10 +1,10 @@
 import Projectile from './Projectile.js'
-
+import Idle from './assets/Idle.png'
 export default class Player {
   constructor(game) {
     this.game = game
-    this.width = 32
-    this.height = 64
+    this.width = 231
+    this.height = 190
     this.x = this.game.width / 2 - this.width / 2
     this.y = this.game.height / 2 - this.height / 2
 
@@ -20,9 +20,39 @@ export default class Player {
     this.ammoInterval = 500
 
     this.lives = 10
+
+    this.fps = 10
+    this.timer = 1
+    this.interval = 1000 / this.fps
+    this.flip = false
+
+
+
+    const image = new Image()
+    image.src = Idle
+    this.image = image
+    this.frameX = 0
+    this.frameY = 0
+    this.maxFrame = 6
+
   }
 
   update(deltaTime) {
+
+    
+
+
+
+    if (this.timer > this.interval) {
+      this.frameX++
+      this.timer = 0
+    } else {
+      this.timer += deltaTime
+    }
+    if (this.frameX >= this.maxFrame) {
+      this.frameX = 0
+    }
+
     if (this.lives <= 0) {
       this.game.gameOver = true
     }
@@ -69,8 +99,25 @@ export default class Player {
   }
 
   draw(context) {
-    context.fillStyle = '#f00'
-    context.fillRect(this.x, this.y, this.width, this.height)
+ context.drawImage(
+      this.image,
+      this.frameX * this.width,
+      this.frameY * this.height,
+      this.width,
+      this.height,
+      this.flip ? this.x * -1 - this.width : this.x,
+      this.y,
+      this.width,
+      this.height
+  
+  
+    )
+    context.restore()
+
+
+
+    // context.fillStyle = '#f00'
+    // context.fillRect(this.x, this.y, this.width, this.height)
     if (this.game.debug) {
       context.strokeStyle = '#000'
       context.strokeRect(this.x, this.y, this.width, this.height)
@@ -90,6 +137,9 @@ export default class Player {
     this.projectiles.forEach((projectile) => {
       projectile.draw(context)
     })
+   
+
+
   }
 
   shoot(mouseX, mouseY) {
@@ -98,6 +148,8 @@ export default class Player {
       mouseY - (this.y + this.height / 2),
       mouseX - (this.x + this.width / 2)
     )
+    
+
 
     if (this.ammo > 0) {
       this.ammo--
@@ -111,6 +163,7 @@ export default class Player {
       )
     } else {
       console.log('out of ammo')
+      
     }
   }
 }

@@ -1,4 +1,6 @@
+
 export default class Enemy {
+ 
   constructor(game, color) {
     this.game = game
     this.x = 0
@@ -8,8 +10,11 @@ export default class Enemy {
     this.markedForDeletion = false
     this.color = color
     this.type = 'enemy'
+    this.radius = Math.floor(Math.random()* 30 +10)
+    
   }
 
+  
   update() {
     this.y += this.speedY
     this.x += this.speedX
@@ -17,10 +22,19 @@ export default class Enemy {
     if (this.y < 0 || this.y > this.game.height) this.markedForDeletion = true
   }
 
-  draw(context) {
-    context.fillStyle = this.color
-    context.fillRect(this.x, this.y, this.width, this.height)
 
+
+
+
+  
+  draw(context) {
+   
+    context.beginPath()
+    context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
+    context.stroke()
+    context.fillStyle = this.color
+    context.fill()
+   
     if (this.game.debug) {
       context.strokeRect(this.x, this.y, this.width, this.height)
       context.fillStyle = 'black'

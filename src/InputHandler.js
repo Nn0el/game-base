@@ -3,7 +3,8 @@ export default class InputHandler {
     this.game = game
     this.mouseX = 0
     this.mouseY = 0
-
+this.sound = new Audio 
+    this.sound.src = 'Fruit collect 1.wav'
     window.addEventListener('keydown', (event) => {
       if (
         (event.key === 'ArrowUp' ||
@@ -16,10 +17,12 @@ export default class InputHandler {
           event.key === 'd') &&
         this.game.keys.indexOf(event.key) === -1
       ) {
+        
         this.game.keys.push(event.key)
       }
 
-      if (event.key === ' ') {
+      if (event.key === '   ') {
+this.sound.play();
         this.game.player.shoot(this.mouseX, this.mouseY)
       }
 
@@ -40,6 +43,7 @@ export default class InputHandler {
     })
 
     window.addEventListener('mousedown', (event) => {
+      this.sound.play();
       this.game.player.shoot(this.mouseX, this.mouseY)
     })
   }

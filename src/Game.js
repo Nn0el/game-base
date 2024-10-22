@@ -3,6 +3,7 @@ import Player from './Player.js'
 import UserInterface from './UserInterface.js'
 import Pumpkin from './Pumpkin.js'
 import Candy from './Candy.js'
+
 export default class Game {
   constructor(width, height, canvasPosition) {
     this.width = width
@@ -19,7 +20,8 @@ export default class Game {
     this.enemies = []
     this.enemyTimer = 0
     this.enemyInterval = 1000
-
+    this.sound = new Audio 
+    this.sound.src = 'Balloon Pop 1.wav'
     this.player = new Player(this)
   }
 
@@ -27,6 +29,8 @@ export default class Game {
     if (!this.gameOver) {
       this.gameTime += deltaTime
     }
+
+
 
     if (this.enemyTimer > this.enemyInterval) {
       let x = Math.random() < 0.5 ? 0 : this.width // spawn on left or right edge
@@ -41,9 +45,9 @@ export default class Game {
         x = Math.random() * this.width // if on bottom edge, randomize x position
       }
       if (Math.random() < 0.2) {
-        this.enemies.push(new Candy(this, x, y))
+        this.enemies.push(new Candy(this, x, y) )
       } else {
-        this.enemies.push(new Pumpkin(this, x, y))
+        this.enemies.push(new Pumpkin(this, x, y) )
       }
       this.enemyTimer = 0
     } else {
@@ -52,9 +56,10 @@ export default class Game {
     this.player.update(deltaTime)
 
     this.enemies.forEach((enemy) => {
-      enemy.update(this.player)
+      enemy.update(this.player, deltaTime)
       if (this.checkCollision(this.player, enemy)) {
         this.player.lives--
+        this.sound.play();
         enemy.markedForDeletion = true
         if (enemy.type === 'candy') {
           this.player.ammo += 5
@@ -66,6 +71,7 @@ export default class Game {
             enemy.lives -= projectile.damage
           } else {
             enemy.markedForDeletion = true
+            this.sound.play();
           }
           projectile.markedForDeletion = true
         }

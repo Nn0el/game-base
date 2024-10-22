@@ -94,3 +94,9 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+#enemy{
+  color: #535bf2;
+  background-color: #535bf2;
+  filter: blur(700px) contrast(2000)
+}
